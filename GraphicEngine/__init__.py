@@ -12,13 +12,23 @@ def mathMap(x: float, in_min: float, in_max: float, out_min: float, out_max: flo
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 
+def constrain(value: float, lowLimit: float, highLimit: float):
+    if value <= lowLimit:
+        return lowLimit
+    if value >= highLimit:
+        return highLimit
+    return value
+
+
 class PygameGFX(ABC):
     __height: int
     __width: int
     __initHandle: Tuple[int, int]
+    __mousePosition: Tuple[int, int]
     __displaySufrace: pygame.Surface
     __running: bool
     __fps: int
+    __keyCode: int
 
     @property
     def DisplaySurface(self):
@@ -40,6 +50,14 @@ class PygameGFX(ABC):
     def IsRunning(self):
         return self.__running
 
+    @property
+    def keyCode(self) -> int:
+        return self.__keyCode
+
+    @property
+    def mousePosition(self):
+        return self.__mousePosition
+
     def __init__(
         self,
         width: int,
@@ -58,9 +76,23 @@ class PygameGFX(ABC):
             pygame.display.set_caption(caption)
 
     def _checkForEvents(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.__running = False
+        events = pygame.event.get()
+        for event in events:
+            match event.type:
+                case pygame.QUIT:
+                    self.__running = False
+                case pygame.KEYDOWN:
+                    self.__keyCode = event.key
+                    self.keyPressed()
+                case pygame.KEYUP:
+                    self.__keyCode = event.key
+                    self.keyReleased()
+                case pygame.MOUSEBUTTONDOWN:
+                    self.__mousePosition = pygame.mouse.get_pos()
+                    self.mousePressed()
+                case pygame.MOUSEBUTTONUP:
+                    self.__mousePosition = pygame.mouse.get_pos()
+                    self.mouseReleased()
 
     def Run(self):
         pygame.init()
@@ -78,6 +110,18 @@ class PygameGFX(ABC):
             self.__displaySufrace.fill((r, g, b))
         else:
             self.__displaySufrace.fill((r, r, r))
+
+    def keyPressed(self):
+        pass
+
+    def keyReleased(self):
+        pass
+
+    def mousePressed(self):
+        pass
+
+    def mouseReleased(self):
+        pass
 
     @abstractmethod
     def Setup(self):
