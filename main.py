@@ -41,5 +41,7 @@ if __name__ == "__main__":
             window = BrownianTreeSnowflake.Window(
                 600, 600, f"Coding Challange #{challange}: Brownian Tree Sonwflake"
             )
+        case _:
+            window = None
     if window:
         window.Run()
