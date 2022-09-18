@@ -66,8 +66,8 @@ class PygameGFX(ABC):
         fps: Optional[int] = None,
     ) -> None:
         self.__running = True
-        self.__height = width
-        self.__width = height
+        self.__height = height
+        self.__width = width
         self.__displaySufrace = pygame.display.set_mode(
             (self.__width, self.__height), pygame.SRCALPHA
         )
