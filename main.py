@@ -3,6 +3,7 @@ import Starfield
 import TheSnakeGame
 import PurpleRain
 import SpaceInvadersClone
+import MitosisSimulation
 import MathematicalRosePatterns
 import BrownianTreeSnowflake
 
@@ -29,6 +30,10 @@ if __name__ == "__main__":
         case 5:
             window = SpaceInvadersClone.Window(
                 600, 400, f"Coding Challange #{challange}: Space Invaders", 60
+            )
+        case 6:
+            window = MitosisSimulation.Window(
+                600, 600, f"Coding Challange #{challange}: Mitosis Simulation", 60
             )
         case 55:
             window = MathematicalRosePatterns.Window(

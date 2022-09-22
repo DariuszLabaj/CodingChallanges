@@ -27,15 +27,15 @@ class Window(GraphicEngine.PygameGFX):
         self.boundryX = (0, self.Width-self.scale)
         self.boundryY = (0, self.Height-self.scale)
         self.player = Snake(self.scale, self.boundryX, self.boundryY)
-        self.food = Food(self.scale, self.boundryX, self.boundryY)
+        self.CreateNewTarget()
 
-    def FoodEaten(self):
-        self.food = Food(self.scale, self.boundryX, self.boundryY)
+    def CreateNewTarget(self):
+        self.target = Food(self.scale, self.boundryX, self.boundryY)
 
     def Draw(self):
         self.background(51)
-        self.food.show(self.DisplaySurface)
+        self.target.show(self.DisplaySurface)
         self.player.update()
         self.player.show(self.DisplaySurface)
-        if self.player.eat(self.food.getRect):
-            self.FoodEaten()
+        if self.player.eat(self.target.getRect):
+            self.CreateNewTarget()
