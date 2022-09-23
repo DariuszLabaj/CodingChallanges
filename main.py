@@ -5,6 +5,7 @@ import PurpleRain
 import SpaceInvadersClone
 import MitosisSimulation
 import MazeGenerator
+import ReactionDiffusionAlgorithm
 import MathematicalRosePatterns
 import BrownianTreeSnowflake
 
@@ -39,6 +40,10 @@ if __name__ == "__main__":
         case 10:
             window = MazeGenerator.Window(
                 800, 800, f"Coding Challange #{challange}: Maze Generator"
+            )
+        case 13:
+            window = ReactionDiffusionAlgorithm.Window(
+                200, 200, f"Coding Challange #{challange}: Reaction Diffusion Algorithm"
             )
         case 55:
             window = MathematicalRosePatterns.Window(
