@@ -20,7 +20,7 @@ class Window(GraphicEngine.PygameGFX):
             cell.show(self.DisplaySurface)
 
     def mouseReleased(self):
-        for i in range(len(self.__cells)-1, -1, -1):
+        for i in range(len(self.__cells) - 1, -1, -1):
             if self.__cells[i].Rect.collidepoint(self.mousePosition):
                 self.__cells.append(self.__cells[i].split())
                 self.__cells.append(self.__cells[i].split())
