@@ -97,6 +97,7 @@ class PygameGFX(ABC):
     def Run(self):
         pygame.init()
         FramePerSec = pygame.time.Clock()
+        self.__font = pygame.font.SysFont(None, 24)
         self.Setup()
         while self.IsRunning:
             self._checkForEvents()
@@ -110,6 +111,9 @@ class PygameGFX(ABC):
             self.__displaySufrace.fill((r, g, b))
         else:
             self.__displaySufrace.fill((r, r, r))
+
+    def drawText(self, text: str, color: pygame.Color):
+        self.DisplaySurface.blit(self.__font.render(text, True, color), (20, 20))
 
     def keyPressed(self):
         pass

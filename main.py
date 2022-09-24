@@ -1,4 +1,5 @@
 import sys
+import FractalTreesLSystem
 import FractalTreesRecursive
 import ObjectOrientedFractalTrees
 import Starfield
@@ -54,6 +55,10 @@ if __name__ == "__main__":
         case 15:
             window = ObjectOrientedFractalTrees.Window(
                 600, 600, f"Coding Challange #{challange}: Object Oriented Fractal Trees", 60
+            )
+        case 16:
+            window = FractalTreesLSystem.Window(
+                600, 600, f"Coding Challange #{challange}: Fractal Trees - L-System", 60
             )
         case 55:
             window = MathematicalRosePatterns.Window(
