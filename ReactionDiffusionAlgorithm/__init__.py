@@ -22,6 +22,7 @@ class Window(GraphicEngine.PygameGFX):
     def Setup(self):
         self.grid = []
         self.next = []
+        self.background(51)
         for x in range(self.Width):
             self.grid.append([])
             self.next.append([])
@@ -33,8 +34,6 @@ class Window(GraphicEngine.PygameGFX):
                 self.grid[i][j].b = 1
 
     def Draw(self):
-        self.background(51)
-
         for x in range(self.Width):
             for y in range(self.Height):
                 a = self.grid[x][y].a

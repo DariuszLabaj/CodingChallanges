@@ -1,4 +1,5 @@
 import sys
+import FractalTreesRecursive
 import Starfield
 import TheSnakeGame
 import PurpleRain
@@ -44,6 +45,10 @@ if __name__ == "__main__":
         case 13:
             window = ReactionDiffusionAlgorithm.Window(
                 200, 200, f"Coding Challange #{challange}: Reaction Diffusion Algorithm"
+            )
+        case 14:
+            window = FractalTreesRecursive.Window(
+                600, 600, f"Coding Challange #{challange}: Fractal Trees Recursive", 60
             )
         case 55:
             window = MathematicalRosePatterns.Window(
