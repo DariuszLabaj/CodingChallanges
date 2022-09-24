@@ -1,66 +1,19 @@
 from __future__ import annotations
-from typing import Optional, Tuple, overload
+from typing import Optional, Tuple
 from abc import ABC, abstractmethod
 import pygame
-import random
+from GraphicEngine.constrain import constrain
+from GraphicEngine.mathMap import mathMap
+from GraphicEngine.random2DVector import random2DVector
 
 
 def drawPixel(surface: pygame.Surface, color: pygame.Color, pos: Tuple[int, int]):
     surface.set_at(pos, color)
 
 
-def mathMap(x: float, in_min: float, in_max: float, out_min: float, out_max: float):
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
-
-
-def constrain(value: float, lowLimit: float, highLimit: float):
-    if value <= lowLimit:
-        return lowLimit
-    if value >= highLimit:
-        return highLimit
-    return value
-
-
-@overload
-def random2DVector() -> pygame.Vector2:
-    ...
-
-
-@overload
-def random2DVector(x1: float, y1: float) -> pygame.Vector2:
-    ...
-
-
-def random2DVector(
-    x1: float = None, y1: float = None, x2: float = None, y2: float = None
-) -> pygame.Vector2:
-    if x1 is None and x2 is None and y1 is None and y2 is None:
-        a = -1
-        b = -1
-        c = 1
-        d = 1
-    elif x2 is None and y2 is None:
-        a = 0
-        b = x1
-        c = 0
-        d = y1
-    elif x1 is not None and x2 is not None and y1 is not None and y2 is not None:
-        a = x1
-        b = y1
-        c = x2
-        d = y2
-    else:
-        raise ValueError()
-    rng = random.Random()
-    return pygame.Vector2(
-        mathMap(rng.random(), 0, 1, a, b), mathMap(rng.random(), 0, 1, c, d)
-    )
-
-
 class PygameGFX(ABC):
     __height: int
     __width: int
-    __initHandle: Tuple[int, int]
     __mousePosition: Tuple[int, int]
     __displaySufrace: pygame.Surface
     __running: bool
@@ -97,8 +50,8 @@ class PygameGFX(ABC):
 
     def __init__(
         self,
-        width: int,
-        height: int,
+        width: int = 400,
+        height: int = 400,
         caption: Optional[str] = None,
         fps: Optional[int] = None,
     ) -> None:
@@ -131,6 +84,13 @@ class PygameGFX(ABC):
                     self.__mousePosition = pygame.mouse.get_pos()
                     self.mouseReleased()
 
+    def setCanvasSize(self, width: int, height: int):
+        self.__height = height
+        self.__width = width
+        self.__displaySufrace = pygame.display.set_mode(
+            (self.__width, self.__height), pygame.SRCALPHA
+        )
+
     def Run(self):
         pygame.init()
         FramePerSec = pygame.time.Clock()
@@ -152,6 +112,82 @@ class PygameGFX(ABC):
     def drawText(self, text: str, color: pygame.Color):
         self.DisplaySurface.blit(self.__font.render(text, True, color), (20, 20))
 
+    def drawPixel(self, color: pygame.Color, pos: Tuple[int, int]):
+        self.DisplaySurface.set_at(pos, color)
+
+    def drawArc(
+        self,
+        rect: pygame.Rect,
+        color: pygame.Color,
+        startAngle: float,
+        stopAngle: float,
+        width: int = 1,
+    ):
+        surface = pygame.Surface(rect.size, pygame.SRCALPHA)
+        pygame.draw.arc(
+            surface, color, surface.get_rect(), startAngle, stopAngle, width
+        )
+        self.DisplaySurface.blit(surface, rect)
+
+    def drawCircle(
+        self, center: pygame.Vector2, radius: float, color: pygame.Color, width: int = 0
+    ):
+        surface = pygame.Surface((radius * 2, radius * 2), pygame.SRCALPHA)
+        pygame.draw.circle(surface, color, (radius, radius), radius, width)
+        self.DisplaySurface.blit(surface, (center.x - radius, center.y - radius))
+
+    def drawEllipse(self, rect: pygame.Rect, color: pygame.Color, width: int = 0):
+        surface = pygame.Surface(rect.size, pygame.SRCALPHA)
+        pygame.draw.ellipse(
+            surface, color, pygame.Rect(0, 0, rect.size[0], rect.size[1]), width
+        )
+        self.DisplaySurface.blit(surface, rect)
+
+    def drawLine(
+        self,
+        startPos: pygame.Vector2,
+        endPos: pygame.Vector2,
+        color: pygame.Color,
+        width: int = 1,
+    ):
+        rectWidth = abs(startPos.x - endPos.x)
+        rectHeight = abs(startPos.y - endPos.y)
+        if rectWidth == 0:
+            rectWidth = 1
+        if rectHeight == 0:
+            rectHeight = 1
+        surface = pygame.Surface((rectWidth, rectHeight), pygame.SRCALPHA)
+        pygame.draw.line(surface, color, (0, 0), (surface.get_rect().size), width)
+        self.DisplaySurface.blit(surface, startPos)
+
+    def drawPolygon(self):
+        raise NotImplementedError()
+
+    def drawRect(
+        self,
+        rect: pygame.Rect,
+        color: pygame.Color,
+        width: int = 0,
+        borderRadius: int = -1,
+        borderTopLeftRadius: int = -1,
+        borderTopRightRadius: int = -1,
+        borderBottomLeftRadius: int = -1,
+        borderBottmRightRadius: int = -1,
+    ):
+        surface = pygame.Surface(rect.size, pygame.SRCALPHA)
+        pygame.draw.rect(
+            surface,
+            color,
+            pygame.Rect(0, 0, rect.width, rect.height),
+            width,
+            borderRadius,
+            borderTopLeftRadius,
+            borderTopRightRadius,
+            borderBottomLeftRadius,
+            borderBottmRightRadius,
+        )
+        self.DisplaySurface.blit(surface, rect)
+
     def keyPressed(self):
         pass
 
@@ -171,3 +207,9 @@ class PygameGFX(ABC):
     @abstractmethod
     def Draw(self):
         print(f"{__name__}\\Draw test")
+
+
+if __name__ == "__main__":
+    help(constrain)
+    help(mathMap)
+    help(random2DVector)
