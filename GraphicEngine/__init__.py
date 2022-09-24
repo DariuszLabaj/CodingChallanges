@@ -7,10 +7,6 @@ from GraphicEngine.mathMap import mathMap
 from GraphicEngine.random2DVector import random2DVector
 
 
-def drawPixel(surface: pygame.Surface, color: pygame.Color, pos: Tuple[int, int]):
-    surface.set_at(pos, color)
-
-
 class PygameGFX(ABC):
     __height: int
     __width: int
