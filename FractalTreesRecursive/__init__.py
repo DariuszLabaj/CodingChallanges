@@ -6,8 +6,6 @@ import pygame
 class Window(GraphicEngine.PygameGFX):
     startLenght: int
     white = pygame.Color(255, 255, 255)
-    xOffset: int = 0
-    yOffset: int = 0
 
     def Setup(self):
         self.startLenght = self.Width/3

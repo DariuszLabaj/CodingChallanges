@@ -1,5 +1,6 @@
 import sys
 import FractalTreesRecursive
+import ObjectOrientedFractalTrees
 import Starfield
 import TheSnakeGame
 import PurpleRain
@@ -49,6 +50,10 @@ if __name__ == "__main__":
         case 14:
             window = FractalTreesRecursive.Window(
                 600, 600, f"Coding Challange #{challange}: Fractal Trees Recursive", 60
+            )
+        case 15:
+            window = ObjectOrientedFractalTrees.Window(
+                600, 600, f"Coding Challange #{challange}: Object Oriented Fractal Trees", 60
             )
         case 55:
             window = MathematicalRosePatterns.Window(
