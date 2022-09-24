@@ -1,7 +1,7 @@
 # Coding Challanges
 
-This is Excersise code that foolows coding challanges as seen on [The Coding Train YT Channel](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH)
-Tu run perticular Challange you need to run main file with callange number argumet:
+This is Exercise code that follows coding challenges as seen on [The Coding Train YT Channel](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH)
+Tu run particular Challenge you need to run main file with callange number argument:
 ```
 python main.py 1
 ```
