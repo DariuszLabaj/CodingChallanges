@@ -1,6 +1,7 @@
 import sys
 import FractalTreesLSystem
 import FractalTreesRecursive
+import FractalTreesSpaceColonization
 import ObjectOrientedFractalTrees
 import Starfield
 import TheSnakeGame
@@ -59,6 +60,10 @@ if __name__ == "__main__":
         case 16:
             window = FractalTreesLSystem.Window(
                 600, 600, f"Coding Challange #{challange}: Fractal Trees - L-System", 60
+            )
+        case 17:
+            window = FractalTreesSpaceColonization.Window(
+                600, 600, f"Coding Challange #{challange}: Fractal Trees - Space Colonization", 60
             )
         case 55:
             window = MathematicalRosePatterns.Window(
