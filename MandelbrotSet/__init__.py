@@ -10,26 +10,29 @@ class Window(GraphicEngine.PygameGFX):
 
     def Draw(self):
         startTime = time.time()
-        self.calulateSet(self.n, 16)
-        self.drawText(f"Iterations : {self.n} | {time.time()-startTime:.03f} [s]", (255, 255, 255))
+        self.calculateSet(self.n, 16)
+        self.drawText(
+            f"Iterations : {self.n} | {time.time()-startTime:.03f} [s]", (255, 255, 255)
+        )
         self.n += 1
 
-    def calulateSet(self, noOfIterations: int, infinityMark: int):
-        for x in range(self.Width):
-            for y in range(self.Height):
-                a = GraphicEngine.mathMap(x, 0, self.Width, -1.5, 1.5)
-                b = GraphicEngine.mathMap(y, 0, self.Height, -1.5, 1.5)
-                ca = a
-                cb = b
+    def calculateSet(self, noOfIterations: int, infinityMark: int):
+        for i in range(self.Width):
+            for j in range(self.Height):
+                a = GraphicEngine.mathMap(i, 0, self.Width, -1.5, 1.5)
+                b = GraphicEngine.mathMap(j, 0, self.Height, -1.5, 1.5)
+                x = a
+                y = b
                 iterations = 0
 
                 for n in range(noOfIterations):
-                    aa = a * a - b * b
-                    bb = 2 * a * b
-                    a = aa + ca
-                    b = bb + cb
-                    if abs(a + b) > infinityMark:
+                    aa = a * a
+                    bb = b * b
+                    two_ab = 2.0 * a * b
+                    if (aa + bb) > infinityMark:
                         break
+                    a = aa - bb + x
+                    b = two_ab + y
                     iterations = n
                 red = abs(GraphicEngine.mathMap(abs(a + b), 0, 1000000, 0, 1))
                 red = GraphicEngine.mathMap(sqrt(red), 0, 1, 0, 255)
@@ -44,5 +47,5 @@ class Window(GraphicEngine.PygameGFX):
                         (green * iterations) % 255,
                         (blue * iterations) % 255,
                     ),
-                    (x, y),
+                    (i, j),
                 )

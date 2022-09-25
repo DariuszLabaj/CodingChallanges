@@ -42,6 +42,7 @@ class PygameGFX(ABC):
 
     @property
     def mousePosition(self):
+        self.__mousePosition = pygame.mouse.get_pos()
         return self.__mousePosition
 
     def __init__(

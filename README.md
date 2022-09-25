@@ -19,5 +19,6 @@ python main.py 1
 - Challange 16  : [Fractal Trees - L-System](https://www.youtube.com/watch?v=E1B4UoSQMFw&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=19)
 - Challange 17  : [Fractal Trees - Space Colonization](https://www.youtube.com/watch?v=kKT0v3qhIQY&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=20)
 - Challange 21  : [Mandelbrot Set](https://www.youtube.com/watch?v=6z7GQewK-Ks&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=24)
+- Challange 22  : [Julia Set](https://www.youtube.com/watch?v=fAsaSkmbF5s&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=25)
 - Challange 55  : [Mathematical Rose Patterns](https://www.youtube.com/watch?v=f5QBExMNB1I&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=72)
 - Challange 127 : [Brownian Tree Sonwflake](https://www.youtube.com/watch?v=XUA8UREROYE&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=182&t=811s)

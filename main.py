@@ -2,6 +2,7 @@ import sys
 import FractalTreesLSystem
 import FractalTreesRecursive
 import FractalTreesSpaceColonization
+import JuliaSet
 import MandelbrotSet
 import ObjectOrientedFractalTrees
 import Starfield
@@ -76,6 +77,8 @@ if __name__ == "__main__":
             window = MandelbrotSet.Window(
                 caption=f"Coding Challange #{challange}: Mandelbrot Set"
             )
+        case 22:
+            window = JuliaSet.Window(caption=f"Coding Challange #{challange}: Julia Set")
         case 55:
             window = MathematicalRosePatterns.Window(
                 800,
