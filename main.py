@@ -5,6 +5,7 @@ import FractalTreesSpaceColonization
 import JuliaSet
 import MandelbrotSet
 import ObjectOrientedFractalTrees
+import PerlinNoiseFlowField
 import Starfield
 import TheSnakeGame
 import PurpleRain
@@ -78,7 +79,16 @@ if __name__ == "__main__":
                 caption=f"Coding Challange #{challange}: Mandelbrot Set"
             )
         case 22:
-            window = JuliaSet.Window(caption=f"Coding Challange #{challange}: Julia Set")
+            window = JuliaSet.Window(
+                caption=f"Coding Challange #{challange}: Julia Set"
+            )
+        case 24:
+            window = PerlinNoiseFlowField.Window(
+                width=640,
+                height=480,
+                caption=f"Coding Challange #{challange}: Perlin Noise Flow Field",
+                fps=60
+            )
         case 55:
             window = MathematicalRosePatterns.Window(
                 800,

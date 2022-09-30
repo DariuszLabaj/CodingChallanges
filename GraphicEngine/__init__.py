@@ -1,4 +1,5 @@
 from __future__ import annotations
+from math import ceil
 from typing import Optional, Tuple
 from abc import ABC, abstractmethod
 import pygame
@@ -19,10 +20,6 @@ class PygameGFX(ABC):
     @property
     def DisplaySurface(self):
         return self.__displaySufrace
-
-    @property
-    def FramePerSec(self):
-        return pygame.time.Clock()
 
     @property
     def Width(self):
@@ -59,6 +56,7 @@ class PygameGFX(ABC):
             (self.__width, self.__height), pygame.SRCALPHA
         )
         self.__fps = fps
+        self.FramePerSec = pygame.time.Clock()
         if caption:
             pygame.display.set_caption(caption)
 
@@ -90,7 +88,6 @@ class PygameGFX(ABC):
 
     def Run(self):
         pygame.init()
-        FramePerSec = pygame.time.Clock()
         self.__font = pygame.font.SysFont(None, 24)
         self.Setup()
         while self.IsRunning:
@@ -98,7 +95,9 @@ class PygameGFX(ABC):
             self.Draw()
             pygame.display.update()
             if self.__fps:
-                FramePerSec.tick(self.__fps)
+                self.FramePerSec.tick(self.__fps)
+            else:
+                self.FramePerSec.tick()
 
     def background(self, r: int, g: int = None, b: int = None):
         if r and g and b:
@@ -110,6 +109,8 @@ class PygameGFX(ABC):
         self.DisplaySurface.blit(self.__font.render(text, True, color), (20, 20))
 
     def drawPixel(self, color: pygame.Color, pos: Tuple[int, int]):
+        if isinstance(color, float):
+            color = (int(color), int(color), int(color))
         self.DisplaySurface.set_at(pos, color)
 
     def drawArc(
@@ -147,8 +148,8 @@ class PygameGFX(ABC):
         color: pygame.Color,
         width: int = 1,
     ):
-        rectWidth = abs(startPos.x - endPos.x)
-        rectHeight = abs(startPos.y - endPos.y)
+        rectWidth = ceil(abs(startPos.x - endPos.x))
+        rectHeight = ceil(abs(startPos.y - endPos.y))
         if rectWidth == 0:
             rectWidth = 1
         if rectHeight == 0:

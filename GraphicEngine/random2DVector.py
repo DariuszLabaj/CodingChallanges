@@ -22,8 +22,8 @@ def random2DVector(
 ) -> pygame.Vector2:
     if x1 is None and x2 is None and y1 is None and y2 is None:
         a = -1
-        b = -1
-        c = 1
+        b = 1
+        c = -1
         d = 1
     elif x2 is None and y2 is None:
         a = 0
