@@ -22,5 +22,6 @@ python main.py 1
 - Challange 22  : [Julia Set](https://www.youtube.com/watch?v=fAsaSkmbF5s&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=25)
 - Challange 24  : [Perlin Noise Flow Field](https://www.youtube.com/watch?v=BjoM9oKOAKY&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=27)
 - Challange 27  : [Fireworks!](https://www.youtube.com/watch?v=CKeyIbT3vXI&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=30)
+- Challange 28  : [Metaballs](https://www.youtube.com/watch?v=ccYLb7cLB1I&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=31)
 - Challange 55  : [Mathematical Rose Patterns](https://www.youtube.com/watch?v=f5QBExMNB1I&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=72)
 - Challange 127 : [Brownian Tree Sonwflake](https://www.youtube.com/watch?v=XUA8UREROYE&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH&index=182)

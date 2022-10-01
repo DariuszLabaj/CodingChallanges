@@ -5,6 +5,7 @@ import FractalTreesRecursive
 import FractalTreesSpaceColonization
 import JuliaSet
 import MandelbrotSet
+import Metaballs
 import ObjectOrientedFractalTrees
 import PerlinNoiseFlowField
 import Starfield
@@ -96,6 +97,12 @@ if __name__ == "__main__":
                 height=1080,
                 caption=f"Coding Challange #{challange}: Fireworks!",
                 fps=60,
+            )
+        case 28:
+            window = Metaballs.Window(
+                width=150,
+                height=150,
+                caption=f"Coding Challange #{challange}: Metaballs",
             )
         case 55:
             window = MathematicalRosePatterns.Window(

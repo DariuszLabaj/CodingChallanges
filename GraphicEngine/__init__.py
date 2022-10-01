@@ -128,8 +128,11 @@ class PygameGFX(ABC):
 
     def drawPixel(self, color: pygame.Color, pos: Tuple[int, int]):
         if isinstance(color, float):
-            color = (int(color), int(color), int(color))
-        self.DisplaySurface.set_at(pos, color)
+            constcolor = constrain(color, 0, 255)
+            tuplecolor = (int(constcolor), int(constcolor), int(constcolor))
+        else:
+            tuplecolor = color
+        self.DisplaySurface.set_at(pos, tuplecolor)
 
     def drawArc(
         self,
