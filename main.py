@@ -1,4 +1,5 @@
 import sys
+import Fireworks
 import FractalTreesLSystem
 import FractalTreesRecursive
 import FractalTreesSpaceColonization
@@ -87,7 +88,14 @@ if __name__ == "__main__":
                 width=640,
                 height=480,
                 caption=f"Coding Challange #{challange}: Perlin Noise Flow Field",
-                fps=60
+                fps=60,
+            )
+        case 27:
+            window = Fireworks.Window(
+                width=2200,
+                height=1080,
+                caption=f"Coding Challange #{challange}: Fireworks!",
+                fps=60,
             )
         case 55:
             window = MathematicalRosePatterns.Window(

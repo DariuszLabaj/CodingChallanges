@@ -44,17 +44,24 @@ class PygameGFX(ABC):
 
     def __init__(
         self,
-        width: int = 400,
-        height: int = 400,
+        width: int = 0,
+        height: int = 0,
         caption: Optional[str] = None,
         fps: Optional[int] = None,
     ) -> None:
         self.__running = True
-        self.__height = height
-        self.__width = width
-        self.__displaySufrace = pygame.display.set_mode(
-            (self.__width, self.__height), pygame.SRCALPHA
-        )
+        if height and width:
+            self.__displaySufrace = pygame.display.set_mode(
+                (width, height), pygame.SRCALPHA
+            )
+            self.__height = height
+            self.__width = width
+        else:
+            self.__displaySufrace = pygame.display.set_mode(
+                (0, 0), pygame.SRCALPHA, pygame.FULLSCREEN
+            )
+            self.__height = self.__displaySufrace.get_width()
+            self.__width = self.__displaySufrace.get_height()
         self.__fps = fps
         self.FramePerSec = pygame.time.Clock()
         if caption:
@@ -86,6 +93,9 @@ class PygameGFX(ABC):
             (self.__width, self.__height), pygame.SRCALPHA
         )
 
+    def Stop(self):
+        self.__running = False
+
     def Run(self):
         pygame.init()
         self.__font = pygame.font.SysFont(None, 24)
@@ -100,8 +110,16 @@ class PygameGFX(ABC):
                 self.FramePerSec.tick()
 
     def background(self, r: int, g: int = None, b: int = None):
-        if r and g and b:
+        if g and b:
             self.__displaySufrace.fill((r, g, b))
+        elif g:
+            surface = pygame.Surface((self.Width, self.Height), pygame.SRCALPHA)
+            pygame.draw.rect(
+                surface,
+                (r, r, r, g),
+                pygame.Rect(0, 0, self.Width, self.Height),
+            )
+            self.__displaySufrace.blit(surface, (0, 0))
         else:
             self.__displaySufrace.fill((r, r, r))
 
