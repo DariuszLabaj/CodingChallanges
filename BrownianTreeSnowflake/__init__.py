@@ -29,7 +29,7 @@ class Window(GraphicEngine.PygameGFX):
             )
 
     def Draw(self) -> None:
-        self.background(r=0, g=0, b=0)
+        self.background(10)
         for i in range(len(self.currents)):
             self.currents[i].update()
             self.currents[i].show(self.DisplaySurface)

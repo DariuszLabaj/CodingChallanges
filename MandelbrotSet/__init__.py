@@ -11,8 +11,11 @@ class Window(GraphicEngine.PygameGFX):
     def Draw(self):
         startTime = time.time()
         self.calculateSet(self.n, 16)
-        self.drawText(
-            f"Iterations : {self.n} | {time.time()-startTime:.03f} [s]", (255, 255, 255)
+        self.drawShapes.Text(
+            self.DisplaySurface,
+            self.Font,
+            f"Iterations : {self.n} | {time.time()-startTime:.03f} [s]",
+            (255, 255, 255)
         )
         self.n += 1
 
@@ -40,8 +43,8 @@ class Window(GraphicEngine.PygameGFX):
                 green = GraphicEngine.mathMap(sqrt(green), 0, 1, 0, 255)
                 blue = abs(GraphicEngine.mathMap(b, 0, 1000000, 0, 1))
                 blue = GraphicEngine.mathMap(sqrt(blue), 0, 1, 0, 255)
-
-                self.drawPixel(
+                self.drawShapes.Pixel(
+                    self.DisplaySurface,
                     (
                         (red * iterations) % 255,
                         (green * iterations) % 255,

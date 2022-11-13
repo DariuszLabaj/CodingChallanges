@@ -18,7 +18,7 @@ class Window(GraphicEngine.PygameGFX):
     def Draw(self):
         if time.time() - self.startTime > 10:
             self.Stop()
-        self.background(0, 25)
+        self.background((0, 25))
         if random() < 0.1:
             self.fireworks.append(Firework(self.Width, self.Height, self.gravity))
         print(int(self.FramePerSec.get_fps()), end="\r")

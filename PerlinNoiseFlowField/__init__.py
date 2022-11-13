@@ -10,7 +10,7 @@ from PerlinNoiseFlowField.particle import Particle
 
 def Vector2fromAngle(angle: float, amlitude: float = 10):
     newHeading = pygame.Vector2(amlitude, 0)
-    newHeading.rotate_ip_rad(angle)
+    newHeading.rotate_rad_ip(angle)
     return newHeading
 
 

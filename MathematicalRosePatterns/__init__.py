@@ -34,7 +34,7 @@ class Window(GraphicEngine.PygameGFX):
             self.points.append((x, y))
 
     def Draw(self):
-        self.background(r=51, g=51, b=51)
+        self.background(51)
         color = (255, 255, 255)
         if self.index < len(self.points):
             for i in range(1, self.index % len(self.points)):

@@ -18,9 +18,16 @@ class Window(GraphicEngine.PygameGFX):
         pixels = self.calculateSet(self.n, 4)
         for i in range(self.Width):
             for j in range(self.Height):
-                self.drawPixel(pixels[i][j], (i, j))
-        self.drawText(
-            f"Iterations : {self.n} | {time.time()-startTime:.03f} [s]", (51, 51, 51)
+                self.drawShapes.Pixel(
+                    self.DisplaySurface,
+                    pixels[i][j],
+                    (i, j)
+                )
+        self.drawShapes.Text(
+            self.DisplaySurface,
+            self.Font,
+            f"Iterations : {self.n} | {time.time()-startTime:.03f} [s]",
+            (51, 51, 51),
         )
         self.n += 1
 

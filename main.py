@@ -78,16 +78,22 @@ if __name__ == "__main__":
             )
         case 21:
             window = MandelbrotSet.Window(
-                caption=f"Coding Challange #{challange}: Mandelbrot Set"
+                width=640,
+                height=480,
+                caption=f"Coding Chall6ange #{challange}: Mandelbrot Set",
+                fps=60,
             )
         case 22:
             window = JuliaSet.Window(
-                caption=f"Coding Challange #{challange}: Julia Set"
+                width=640,
+                height=480,
+                caption=f"Coding Challange #{challange}: Julia Set",
+                fps=60,
             )
         case 24:
             window = PerlinNoiseFlowField.Window(
-                width=640,
-                height=480,
+                width=340,
+                height=280,
                 caption=f"Coding Challange #{challange}: Perlin Noise Flow Field",
                 fps=60,
             )

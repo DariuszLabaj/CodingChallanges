@@ -12,7 +12,7 @@ class Window(GraphicEngine.PygameGFX):
             self.drops.append(Drop(self.Width, self.Height))
 
     def Draw(self):
-        self.background(230, 230, 250)
+        self.background((230, 230, 250))
         for drop in self.drops:
             drop.update()
             drop.show(self.DisplaySurface)
