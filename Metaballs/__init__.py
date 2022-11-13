@@ -33,7 +33,8 @@ class Window(GraphicEngine.PygameGFX):
             for blob in self.blobs:
                 distance = pixel.distance_to(blob.pos)
                 color += 50 * blob.r / distance if distance > 0 else 255
-            self.drawPixel(color, (int(pixel.x), int(pixel.y)))
+                color = int(GraphicEngine.constrain(color, 0, 255))
+            self.drawPixel((color, color, color), (int(pixel.x), int(pixel.y)))
         """for x in self.xs:
             for y in self.ys:
                 color = 0
