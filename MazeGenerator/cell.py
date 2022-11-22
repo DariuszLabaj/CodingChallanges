@@ -22,8 +22,8 @@ class Cell:
         self.size = size
         self.__surface = self.__createSurface()
         self.__color = (255, 255, 255, 255)
-        self.walls = {"Top": True, "Right": True, "Bottom": True, "Left": True}
-        self.visited = False
+        self.walls: dict[str, bool] = {"Top": True, "Right": True, "Bottom": True, "Left": True}
+        self.visited: bool = False
 
     def __createSurface(self) -> pygame.Surface:
         return pygame.Surface((self.size, self.size), pygame.SRCALPHA)
@@ -58,8 +58,8 @@ class Cell:
                 (self.__Rect.x, self.__Rect.height),
             )
 
-    def index(self, i, j) -> int:
-        return i + j * self.noCols
+    def index(self, i: int, j: int) -> int:
+        return int(i + j * self.noCols)
 
     def __getNeigbor(self, grid: List[Cell], i: int, j: int):
         if i < 0 or j < 0 or i > self.noCols - 1 or j > self.noRows - 1:
@@ -67,7 +67,7 @@ class Cell:
         return grid[self.index(i, j)]
 
     def checkNeighbors(self, grid: List[Cell]) -> Union[Cell, None]:
-        neighbors = []
+        neighbors: list[Cell] = []
         checkdata = [
             self.__getNeigbor(grid, self.i, self.j - 1),
             self.__getNeigbor(grid, self.i + 1, self.j),
@@ -83,13 +83,13 @@ class Cell:
         else:
             return None
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         self.__surface = self.__createSurface()
         if self.visited:
             pygame.draw.rect(self.__surface, (255, 0, 255, 100), self.__Rect)
         self.drawWalls()
         window.blit(self.__surface, self.Rect)
 
-    def highlight(self, window: pygame.Surface):
+    def highlight(self, window: pygame.Surface | pygame.surface.Surface):
         pygame.draw.rect(self.__surface, (0, 0, 255, 100), self.__Rect)
         window.blit(self.__surface, self.Rect)

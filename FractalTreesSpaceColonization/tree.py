@@ -33,7 +33,7 @@ class Tree:
                 current = branch
                 self.branches.append(branch)
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         for leaf in self.leaves:
             leaf.show(window)
         for branch in self.branches:
@@ -57,8 +57,8 @@ class Tree:
             if closestBranch is not None:
                 newDir = leaf.pos - closestBranch.pos
                 newDir = newDir.normalize()
-                closestBranch.dir += newDir
-                closestBranch.dir = closestBranch.dir.normalize()
+                closestBranch.dir += newDir  # type: ignore
+                closestBranch.dir = closestBranch.dir.normalize()  # type: ignore
                 closestBranch.count += 1
         for i in range(len(self.leaves) - 1, -1, -1):
             if self.leaves[i].reched:
@@ -66,6 +66,6 @@ class Tree:
 
         for i in range(len(self.branches)-1, -1, -1):
             if self.branches[i].count > 0:
-                self.branches[i].dir /= self.branches[i].count+1
+                self.branches[i].dir /= self.branches[i].count+1  # type: ignore
                 self.branches.append(self.branches[i].next())
             self.branches[i].reset()

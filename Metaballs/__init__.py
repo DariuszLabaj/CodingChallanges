@@ -8,19 +8,18 @@ from GraphicEngine.random2DVector import random2DVector
 
 class Window(GraphicEngine.PygameGFX):
     def Setup(self):
-        self.blobs: List[Blob] = []
-        for _ in range(6):
-            self.blobs.append(
-                Blob(
-                    randint(0, self.Width),
-                    randint(0, self.Height),
-                    self.Width,
-                    self.Height,
-                )
-            )
-        self.blobs = np.array(self.blobs, Blob)
-        self.xs = np.array(range(self.Width), int)
-        self.ys = np.array(range(self.Height), int)
+        self.blobsA: List[Blob] = [
+            Blob(
+                randint(0, self.Width),
+                randint(0, self.Height),
+                self.Width,
+                self.Height,
+            ) for _ in range(6)
+        ]
+            
+        self.blobs = np.array(self.blobsA, Blob)  # type: ignore
+        self.xs = np.array(range(self.Width), int)  # type: ignore
+        self.ys = np.array(range(self.Height), int)  # type: ignore
         self.pixels: list[pygame.Vector2] = []
         for x in self.xs:
             for y in self.ys:

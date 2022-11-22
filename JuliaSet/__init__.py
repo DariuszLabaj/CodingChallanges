@@ -32,7 +32,7 @@ class Window(GraphicEngine.PygameGFX):
         self.n += 1
 
     def calculateSet(self, noOfIterations: int, infinityMark: int):
-        pixels = [[(0, 0, 0) for y in range(self.Height)] for x in range(self.Width)]
+        pixels: list[list[tuple[int, int, int]]] = [[(0, 0, 0) for _ in range(self.Height)] for __ in range(self.Width)]
         for i in range(self.Width):
             for j in range(self.Height):
                 a = GraphicEngine.mathMap(i, 0, self.Width, -1.5, 1.5)
@@ -54,5 +54,5 @@ class Window(GraphicEngine.PygameGFX):
                 red = GraphicEngine.mathMap(sqrt(red), 0, 1, 255, 0)
                 if iterations == noOfIterations - 1:
                     red = 0
-                pixels[i][j] = (red, red, red)
+                pixels[i][j] = (int(red), int(red), int(red))
         return pixels

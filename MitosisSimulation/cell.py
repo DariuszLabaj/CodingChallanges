@@ -15,7 +15,7 @@ class Cell:
         )
 
     @staticmethod
-    def RandomCell(limitV: Tuple[int, int], limitH: tuple[int, int]) -> Cell:
+    def RandomCell(limitV: Tuple[float, float], limitH: tuple[float, float]) -> Cell:
         return Cell(Cell.getPosition(limitV, limitH), 80)
 
     def __init__(self, vector: pygame.Vector2, radius: int, color: Optional[pygame.Color] = None):
@@ -31,10 +31,10 @@ class Cell:
         self.__nextRandomVector = None
 
     @staticmethod
-    def getPosition(limitV: Tuple[int, int], limitH: tuple[int, int]) -> pygame.Vector2:
+    def getPosition(limitV: Tuple[float, float], limitH: tuple[float, float]) -> pygame.Vector2:
         rng = random.Random()
-        x = rng.randint(limitV[0], limitV[1])
-        y = rng.randint(limitH[0], limitH[0])
+        x = rng.randint(int(limitV[0]), int(limitV[1]))
+        y = rng.randint(int(limitH[0]), int(limitH[0]))
         return pygame.Vector2(x, y)
 
     @staticmethod
@@ -44,16 +44,16 @@ class Cell:
 
     def split(self) -> Cell:
         if self.__nextRandomVector:
-            return Cell(self.__nextRandomVector, self.radius*0.75, self.color)
+            return Cell(self.__nextRandomVector, int(self.radius*0.75), self.color)  # type: ignore
         else:
             rngVector = Cell.random2DVector()
             newVector = pygame.Vector2(self.pos.x, self.pos.y) + rngVector * (self.radius/2)
             self.__nextRandomVector = pygame.Vector2(self.pos.x, self.pos.y) - rngVector * (self.radius/2)
-            return Cell(newVector, self.radius*0.75, self.color)
+            return Cell(newVector, int(self.radius*0.75), self.color)  # type: ignore
 
     def move(self):
         rngVect = self.random2DVector()
         self.pos += rngVect
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         pygame.draw.ellipse(window, self.color, self.Rect)

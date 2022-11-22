@@ -60,7 +60,7 @@ class Particle:
         self.acc.x = 0
         self.acc.y = 0
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         surf = pygame.Surface((4, 4), pygame.SRCALPHA)
         pygame.draw.rect(surf, self.__color, self.__rect)
         window.blit(surf, self.pos)

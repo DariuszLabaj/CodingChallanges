@@ -15,7 +15,7 @@ class Window(GraphicEngine.PygameGFX):
             self.DisplaySurface,
             self.Font,
             f"Iterations : {self.n} | {time.time()-startTime:.03f} [s]",
-            (255, 255, 255)
+            (255, 255, 255),
         )
         self.n += 1
 
@@ -46,9 +46,9 @@ class Window(GraphicEngine.PygameGFX):
                 self.drawShapes.Pixel(
                     self.DisplaySurface,
                     (
-                        (red * iterations) % 255,
-                        (green * iterations) % 255,
-                        (blue * iterations) % 255,
+                        int((red * iterations) % 255),
+                        int((green * iterations) % 255),
+                        int((blue * iterations) % 255),
                     ),
                     (i, j),
                 )

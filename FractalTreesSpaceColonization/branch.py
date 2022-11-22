@@ -9,18 +9,18 @@ class Branch:
     def __init__(
         self, parent: Branch | None, position: pygame.Vector2, direction: pygame.Vector2
     ):
-        self.pos = position
-        self.parent = parent
-        self.dir = direction
-        self.orgDir = direction
+        self.pos: pygame.Vector2 = position
+        self.parent: Branch | None = parent
+        self.dir: pygame.Vector2 = direction
+        self.orgDir: pygame.Vector2 = direction
 
     def next(self):
         nextDir = pygame.Vector2(self.dir.x, self.dir.y)
-        nextPos = self.pos + (self.dir*self.lenght)
+        nextPos: pygame.Vector2 = self.pos + (self.dir*self.lenght)  # type: ignore
         nextBranch = Branch(self, nextPos, nextDir)
         return nextBranch
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         if self.parent:
             pygame.draw.line(window, (255, 255, 255), self.parent.pos, self.pos)
 

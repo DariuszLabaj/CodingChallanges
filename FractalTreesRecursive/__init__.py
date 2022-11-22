@@ -4,7 +4,7 @@ import pygame
 
 
 class Window(GraphicEngine.PygameGFX):
-    startLenght: int
+    startLenght: float
     white = pygame.Color(255, 255, 255)
 
     def Setup(self):

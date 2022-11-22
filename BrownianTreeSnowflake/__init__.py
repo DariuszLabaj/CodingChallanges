@@ -6,7 +6,7 @@ from typing import List
 
 class Window(GraphicEngine.PygameGFX):
     listOfAngles: List[int]
-    snowFlakes: List[List[Particle]]
+    snowFlakes: List[Particle]
     currents: List[Particle]
 
     @staticmethod
@@ -20,7 +20,7 @@ class Window(GraphicEngine.PygameGFX):
         return particle
 
     def Setup(self) -> None:
-        self.listOfAngles: List[int] = range(0, 360, 22)
+        self.listOfAngles: List[int] = [x for x in range(0, 360, 22)]
         self.snowFlakes: List[Particle] = []
         self.currents: List[Particle] = []
         for i in range(len(self.listOfAngles)):

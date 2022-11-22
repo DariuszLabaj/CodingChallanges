@@ -37,6 +37,6 @@ class Window(GraphicEngine.PygameGFX):
                 if not self.branches[i].finished:
                     self.leaves.append(
                         Leaf(
-                            self.branches[i].endPoz.x, self.branches[i].endPoz.y
+                            int(self.branches[i].endPoz.x), int(self.branches[i].endPoz.y)
                         )
                     )

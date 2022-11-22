@@ -30,7 +30,7 @@ class Leaf:
     def __createSurface(self):
         return pygame.Surface((self.diameter, self.diameter), pygame.SRCALPHA)
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         surface = self.__createSurface()
         pygame.draw.ellipse(surface, (255, 0, 100, 100), self.__rect)
         window.blit(surface, self.Rect)

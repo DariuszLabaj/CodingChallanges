@@ -1,4 +1,3 @@
-from pip import List
 import pygame
 from Fireworks.firework import Firework
 import GraphicEngine
@@ -7,7 +6,7 @@ import time
 
 
 class Window(GraphicEngine.PygameGFX):
-    fireworks: List[Firework]
+    fireworks: list[Firework]
     gravity = pygame.Vector2(0, 0.2)
 
     def Setup(self):

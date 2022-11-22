@@ -1,6 +1,8 @@
 import math
 from typing import List
+
 import GraphicEngine
+
 from MazeGenerator.cell import Cell
 
 
@@ -10,7 +12,7 @@ class Window(GraphicEngine.PygameGFX):
     size: int
     cells: List[Cell]
     stack: List[Cell]
-    current = Cell
+    current: Cell
 
     def Setup(self):
         self.size = 10

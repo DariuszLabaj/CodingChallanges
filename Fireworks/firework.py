@@ -14,7 +14,7 @@ class Firework:
     def __getRandomColor(self) -> Tuple[int, int, int]:
         return hsvToRgb(randint(0, 359))
 
-    def __init__(self, width: int, height: int, gravity: float):
+    def __init__(self, width: int, height: int, gravity: pygame.Vector2):
         self.canvasWidth = width
         self.canvasHeight = height
         self.gravity = gravity
@@ -56,7 +56,7 @@ class Firework:
                 )
             )
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         if not self.exploded:
             self.firework.show(window)
         for particle in self.particles:

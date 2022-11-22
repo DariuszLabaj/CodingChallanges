@@ -1,4 +1,5 @@
 import sys
+
 import Fireworks
 import FractalTreesLSystem
 import FractalTreesRecursive
@@ -102,7 +103,7 @@ if __name__ == "__main__":
                 width=2200,
                 height=1080,
                 caption=f"Coding Challange #{challange}: Fireworks!",
-                fps=60,
+                fps=120,
             )
         case 28:
             window = Metaballs.Window(

@@ -1,15 +1,17 @@
 from __future__ import annotations
-from math import dist
+
 import random
-from typing import List, Optional
+from math import dist
+from typing import List
+
 import pygame
 
 
-class Particle(pygame.sprite.Sprite):
+class Particle():
     __pos: pygame.Vector2
     __home: pygame.Vector2
     __start: pygame.Vector2
-    _r: int
+    _r: float
     __surf: pygame.Surface
     __disabled: bool
 
@@ -36,7 +38,7 @@ class Particle(pygame.sprite.Sprite):
         y: float,
         home: pygame.Vector2,
         rotate: float = 0,
-        radius: Optional[float] = 3.0,
+        radius: float = 3.0,
     ):
         super().__init__()
         self.__disabled = False
@@ -48,9 +50,9 @@ class Particle(pygame.sprite.Sprite):
             self.__surf, (255, 255, 255), (self._r, self._r), radius=self._r
         )
         self.__rect = self.__surf.get_rect()
-        self.__rect.center = self.__pos
+        self.__rect.center = (int(self.__pos.x), int(self.__pos.y))
         self.__home = home
-        self.__lastDist = self.__home.distance_to(self.__pos) + 4*self._r
+        self.__lastDist: float = self.__home.distance_to(self.__pos) + 4*self._r
         self.__angle = rotate
 
     def update(self):
@@ -62,12 +64,12 @@ class Particle(pygame.sprite.Sprite):
         )
         self.__pos.x += newVect.x
         self.__pos.y += newVect.y
-        self.__rect.center = self.__pos
+        self.__rect.center = (int(self.__pos.x), int(self.__pos.y))
 
     def disable(self):
         self.__disabled = True
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         window.blit(self.__surf, self.__rect)
 
     def Intersect(self, sonwflake: List[Particle]) -> bool:

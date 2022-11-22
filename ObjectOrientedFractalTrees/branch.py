@@ -26,5 +26,5 @@ class Branch:
         self.finished = True
         return [right, left]
 
-    def show(self, window: pygame.Surface):
+    def show(self, window: pygame.Surface | pygame.surface.Surface):
         pygame.draw.line(window, (255, 255, 255), self.startPoz, self.endPoz)

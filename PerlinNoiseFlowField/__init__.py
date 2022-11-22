@@ -1,9 +1,10 @@
+import random
 from math import pi
 from typing import List
+
 import GraphicEngine
-from perlin_noise import PerlinNoise
 import pygame
-import random
+from perlin_noise import PerlinNoise  # type: ignore
 
 from PerlinNoiseFlowField.particle import Particle
 
@@ -36,7 +37,7 @@ class Window(GraphicEngine.PygameGFX):
                 self.flowFiled.append(pygame.Vector2())
         self.particles = []
         rng = random.Random()
-        for i in range(100):
+        for _ in range(100):
             self.particles.append(
                 Particle(
                     rng.randint(0, self.Width),
@@ -45,7 +46,7 @@ class Window(GraphicEngine.PygameGFX):
                     self.Height,
                 )
             )
-        self.noises: List[List[PerlinNoise]] = [
+        self.noises: List[List[float]] = [
             [
                 [
                     self.noise([x * self.inc, y * self.inc*0.1, z * self.zinc])
