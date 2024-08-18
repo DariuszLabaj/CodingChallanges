@@ -1,6 +1,8 @@
 import sys
 
 import Fireworks
+import FourierSeries
+import FourierTransform
 import FractalTreesLSystem
 import FractalTreesRecursive
 import FractalTreesSpaceColonization
@@ -25,7 +27,7 @@ if __name__ == "__main__":
     if len(args) > 1 and args[1].isdigit():
         challenge = int(args[1])
     else:
-        challenge = 10
+        challenge = 130
     match challenge:
         case 1:
             window = Starfield.Window(
@@ -119,11 +121,16 @@ if __name__ == "__main__":
                 60,
             )
         case 125:
-            window = None
-            text = f"Coding Challenge #{challenge}: Fourier Series"
+            window = FourierSeries.Window(
+                600, 400, f"Coding Challenge #{challenge}: Fourier Series"
+            )
         case 127:
             window = BrownianTreeSnowflake.Window(
                 600, 600, f"Coding Challenge #{challenge}: Brownian Tree Snowflake"
+            )
+        case 130:
+            window = FourierTransform.Window(
+                800, 600, f"Coding Challenge #{challenge}: Drawing with Fourier Transform and Epicycles"
             )
         case _:
             window = None
