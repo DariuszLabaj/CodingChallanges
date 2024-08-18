@@ -118,6 +118,9 @@ if __name__ == "__main__":
                 f"Coding Challenge #{challenge}: Mathematical Rose Patterns",
                 60,
             )
+        case 125:
+            window = None
+            text = f"Coding Challenge #{challenge}: Fourier Series"
         case 127:
             window = BrownianTreeSnowflake.Window(
                 600, 600, f"Coding Challenge #{challenge}: Brownian Tree Snowflake"
